@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletRequest
 class MemberController(private val memberService: MemberService) {
 	@RequestMapping("/")
 	public fun indexPage(m: Model): String {
-		/*m.addAttribute("memberDto", MemberDto("", "",
-			"", "", null))
-		m.addAttribute("loginMember", memberService.findByMemberId("qwe"))*/
 		memberService.findByMemberId("qwe")?.let {loginMember ->
 			m.addAttribute("loginMember", loginMember)
 			m.addAttribute("memberDto", MemberDto("", "",
