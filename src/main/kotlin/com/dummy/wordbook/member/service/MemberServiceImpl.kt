@@ -10,6 +10,10 @@ class MemberServiceImpl(private val memberRepository: MemberRepository) : Member
 		return memberRepository.findByMemberId(memberId)
 	}
 
+	override fun findByMemberIdAndPassword(memberId: String, password: String): Member? {
+		return memberRepository.findByMemberIdAndPassword(memberId, password)
+	}
+
 	override fun save(member: Member) {
 		memberRepository.save(member)
 	}

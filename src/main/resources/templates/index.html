@@ -5,7 +5,7 @@
     <title>인덱스 페이지!</title>
 </head>
 <body>
-<p th:if="${loginMember != null}" th:text="|로그인 중(${loginMember.memberId})|">
+<!--<p th:if="${loginMember != null}" th:text="|로그인 중(${loginMember.memberId})|">
     <form th:if="${member != null}" th:object="${memberDto}" method="post" th:action="@{/insertMember}">
         <label for="memberId">ID: </label>
             <input th:field="*{memberId}" id="memberId" name="memberId">
@@ -19,7 +19,15 @@
             <input th:field="*{address}" id="address" name="address">
         <button>ㅇㅅㅇ!!!</button>
     </form>
-</p>
-<p th:unless="${loginMember != null}">로그인 필요</p>
+</p>-->
+<form th:if="${session.loginMember == null}" th:object="${memberDto}" th:action="@{/}" method="post">
+	<label><input name="memberId" id="memberId" /></label>
+	<br />
+	<label><input name="password" id="password" type="password"/></label>
+	<button>ㅇㅅㅇ</button>
+</form>
+<h1 th:unless="${session.loginMember == null}" th:text="${session.loginMember}"></h1>
+
+<script th:if="${session.loginMember == null}" th:src="@{loginResult.js}"></script>
 </body>
 </html>

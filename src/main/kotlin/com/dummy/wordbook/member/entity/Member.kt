@@ -9,14 +9,15 @@ import javax.persistence.Id
 import javax.persistence.SequenceGenerator
 
 @Entity
-@SequenceGenerator(name="MEMBER_SEQ_GENERATOR",
+/*@SequenceGenerator(name="MEMBER_SEQ_GENERATOR",
 	sequenceName="MEMBER_SEQ",
 	initialValue=21,
 	allocationSize=1
-)
+)*/
 data class Member(
+	/*@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")*/
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MEMBER_SEQ_GENERATOR")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	val id: Long?,
 	@Column(unique = true, nullable = false, length = 15)
 	var memberId: String,
@@ -29,8 +30,8 @@ data class Member(
 	var address: String?,
 	@Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	val regDate: Date?,
-	@Column(nullable = false, columnDefinition = "number(1,0) default 0")
-	val certified: Boolean?
+	@Column(nullable = false, columnDefinition = "number(2,0) default 0")
+	val certified: Byte?
 ) {
 	override fun hashCode(): Int {
 		return 1
