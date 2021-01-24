@@ -20,14 +20,20 @@
         <button>ㅇㅅㅇ!!!</button>
     </form>
 </p>-->
-<form th:if="${session.loginMember == null}" th:object="${memberDto}" th:action="@{/}" method="post">
-	<label><input name="memberId" id="memberId" /></label>
-	<br />
-	<label><input name="password" id="password" type="password"/></label>
-	<button>ㅇㅅㅇ</button>
+<form th:if="${session.loginMember == null}" th:object="${memberDto}" th:action="@{/}" method="post" id="loginForm">
+	<fieldset>
+		<label>ID: <input name="memberId" id="memberId" /></label>
+		<br />
+		<label>패스워드: <input name="password" id="password" type="password"/></label>
+		<br />
+		<button id="loginBtn">ㅇㅅㅇ!!</button>
+		<br />
+		<button type="button" onclick="insertMember()">ㅇㅂㅇ</button>
+	</fieldset>
 </form>
 <h1 th:unless="${session.loginMember == null}" th:text="${session.loginMember}"></h1>
 
-<script th:if="${session.loginMember == null}" th:src="@{loginResult.js}"></script>
+<script th:if="${session.loginMember == null}" th:src="@{js/login/loginResult.js}"></script>
+<script th:if="${session.loginMember == null}" th:src="@{js/login/insertForm.js}"></script>
 </body>
 </html>

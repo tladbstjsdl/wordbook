@@ -36,15 +36,10 @@ class MemberController(private val memberService: MemberService) {
 		return "memberIdError"
 	}
 
-	@PostMapping("/insertMember")
-	public fun insertMember(req: HttpServletRequest, m: Model): String {
-		var memberId: String = req.getParameter("memberId")
-		memberService.save(MemberDto(null, memberId, req.getParameter("password"),
-			req.getParameter("email"), req.getParameter("phone"), req.getParameter("address"),
-			null, null).toEntity()).run {
-				m.addAttribute("newMember", memberService.findByMemberId(memberId))
-		}
-
-		return "insertComplete"
+	@PostMapping("/insertForm")
+	public fun insertForm(m: Model): String {
+		m.addAttribute("memberDto", MemberDto("", "",
+			"", "", null))
+		return "insertForm"
 	}
 }
