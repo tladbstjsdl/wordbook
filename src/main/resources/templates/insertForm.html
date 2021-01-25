@@ -6,17 +6,32 @@
 </head>
 <body>
 <form th:object="${memberDto}" method="post" th:action="@{/insertMember}">
-	<label for="memberId">ID: </label>
-	<input th:field="*{memberId}" id="memberId" name="memberId">
-	<label for="password">비밀번호: </label>
-	<input th:field="*{password}" id="password" name="password" type="password">
-	<label for="email">이메일: </label>
-	<input th:field="*{email}" id="email" name="email" type="email"  />
-	<label for="phone">휴대폰: </label>
-	<input th:field="*{phone}" id="phone" name="phone" type="tel">
-	<label for="address">주소: </label>
-	<input th:field="*{address}" id="address" name="address">
-	<button>ㅇㅅㅇ!!!</button>
+	<label for="memberId">ID:
+		<input th:field="*{memberId}" id="memberId" name="memberId" />
+	</label><span name="memberId"></span>
+	<br />
+	<label for="password">비밀번호:
+		<input th:field="*{password}" id="password" name="password" type="password" />
+	</label><span name="password"></span>
+	<br />
+	<label for="password">비밀번호 확인:
+		<input th:field="*{password}" id="passwordConfirm" type="password" />
+	</label><span name="passwordConfirm"></span>
+	<br />
+	<label for="email">이메일:
+		<input th:field="*{email}" id="email" name="email" type="email"  />
+	</label><span name="email"></span>
+	<br />
+	<label for="phone">휴대폰:
+		<input th:field="*{phone}" id="phone" name="phone" type="tel" />
+	</label><span name="phone"></span>
+	<br />
+	<label for="address">주소:
+		<input th:field="*{address}" id="address" name="address" />
+	</label><span name="address"></span>
+	<br />
+	<button id="submit">ㅇㅅㅇ!!!</button>
 </form>
+<script th:src="@{js/insert/validation.js}"></script>
 </body>
 </html>
