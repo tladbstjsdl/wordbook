@@ -1,5 +1,6 @@
-const idRegex = /^(?!_)[A-za-z]([\d\w.]{4,14})$/;
+const idRegex = /^[A-Za-z]([\d\w.]{4,14})$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\/.,<>`~[\]{}])[A-Za-z\d!@#$%^&*()\-_=+\\/.,<>`~[\]{}]{8,16}$/;
+const emailRegex = /^.*@\w+\.(?!_)[A-Za-z]{2,3}\.(?!_)[A-Za-z]{0,2}$/;
 window.addEventListener("DOMContentLoaded", function() {
 	const idInput = document.querySelector("input#memberId");
 	const idWarning = document.querySelector("span[name=memberId]");
@@ -7,9 +8,9 @@ window.addEventListener("DOMContentLoaded", function() {
 	const passwordWarning = document.querySelector("span[name=password]");
 	const passwordConfirmInput = document.querySelector("input#passwordConfirm");
 	const passwordConfirmWarning = document.querySelector("span[name=passwordConfirm]");
+	const emailInput = document.querySelector("input#email");
+	const emailWarning = document.querySelector("span[name=email]");
 	/*const idInput = document.querySelector("input#memberId");
-	const idWarning = document.querySelector("span[name=memberId]");
-	const idInput = document.querySelector("input#memberId");
 	const idWarning = document.querySelector("span[name=memberId]");
 	const idInput = document.querySelector("input#memberId");
 	const idWarning = document.querySelector("span[name=memberId]");*/
