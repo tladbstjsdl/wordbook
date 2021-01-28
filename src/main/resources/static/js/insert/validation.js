@@ -1,6 +1,7 @@
 const idRegex = /^[A-Za-z]([\d\w.]{4,14})$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\/.,<>`~[\]{}])[A-Za-z\d!@#$%^&*()\-_=+\\/.,<>`~[\]{}]{8,16}$/;
 const emailRegex = /^.*@\w+\.(?!_)[A-Za-z]{2,3}\.(?!_)[A-Za-z]{0,2}$/;
+const phoneRegex = /^\d{9,11}$/;
 window.addEventListener("DOMContentLoaded", function() {
 	const idInput = document.querySelector("input#memberId");
 	const idWarning = document.querySelector("span[name=memberId]");
@@ -10,10 +11,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	const passwordConfirmWarning = document.querySelector("span[name=passwordConfirm]");
 	const emailInput = document.querySelector("input#email");
 	const emailWarning = document.querySelector("span[name=email]");
-	/*const idInput = document.querySelector("input#memberId");
-	const idWarning = document.querySelector("span[name=memberId]");
-	const idInput = document.querySelector("input#memberId");
-	const idWarning = document.querySelector("span[name=memberId]");*/
+	const phoneInput = document.querySelector("input#phone");
+	const phoneWarning = document.querySelector("span[name=phone]");
+	const addressInput = document.querySelector("input#address");
+	const addressWarning = document.querySelector("span[name=address]");
 	const submitBtn = document.querySelector("#submit");
 
 	idInput.addEventListener("blur", function() {
@@ -40,6 +41,20 @@ window.addEventListener("DOMContentLoaded", function() {
 			passwordConfirmWarning.innerText = "";
 		}
 	});
+	emailInput.addEventListener("blur", function() {
+		if(!emailRegex.test(emailInput.value)) {
+			emailWarning.innerText = "이메일 형식을 맞춰주세요.";
+		}
+		else {
+			emailWarning.innerText = "";
+		}
+	});
+	phoneInput.addEventListener("blur", function() {
+
+	});
+	addressInput.addEventListener("blur", function() {
+
+	});
 
 	submitBtn.onclick = function() {
 		if(!idRegex.test(idInput.value)) {
@@ -58,6 +73,11 @@ window.addEventListener("DOMContentLoaded", function() {
 			alert("비밀번호가 다릅니다.");
 			passwordConfirmWarning.innerText = "비밀번호가 다릅니다.";
 			passwordConfirmInput.focus();
+		}
+		else if(!emailRegex.test(emailInput.value)) {
+			alert("이메일 형식이 틀렸습니다.");
+			emailWarning.innerText = "이메일 형식을 맞춰주세요.";
+			emailInput.focus();
 		}
 	}
 })

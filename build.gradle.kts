@@ -27,7 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    /*implementation("org.springframework.boot:spring-boot-starter-security")*/
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-web-services")
@@ -35,9 +35,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	/*implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")*/
-    /*implementation("org.springframework.session:spring-session-jdbc")
-    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")*/
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    implementation("org.springframework.session:spring-session-jdbc")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
+    //developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.oracle.database.jdbc:ojdbc8")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
