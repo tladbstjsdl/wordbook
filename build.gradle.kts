@@ -35,7 +35,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	/*implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")*/
-    implementation("org.springframework.session:spring-session-jdbc")
+    /*implementation("org.springframework.session:spring-session-jdbc")*/
     implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5")
     //developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.oracle.database.jdbc:ojdbc8")

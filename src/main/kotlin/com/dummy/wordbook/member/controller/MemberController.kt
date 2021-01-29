@@ -1,6 +1,7 @@
 package com.dummy.wordbook.member.controller
 
 import com.dummy.wordbook.member.dto.MemberDto
+import com.dummy.wordbook.member.entity.Member
 import com.dummy.wordbook.member.service.MemberService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -41,5 +42,16 @@ class MemberController(private val memberService: MemberService) {
 		m.addAttribute("memberDto", MemberDto("", "",
 			"", "", null))
 		return "insertForm"
+	}
+
+	@PostMapping("/insertMember")
+	public fun insertMember(req: HttpServletRequest, m: Model): String {
+		val memberId: String = req.getParameter("memberId")
+		memberService.save(Member(memberId, req.getParameter("password"),
+			req.getParameter("email"), req.getParameter("phone"), req.getParameter("address"))).run {
+				m.addAttribute("newMember", memberService.findByMemberId(memberId))
+		}
+
+		return "insertComplete"
 	}
 }

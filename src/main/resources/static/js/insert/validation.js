@@ -1,6 +1,6 @@
 const idRegex = /^[A-Za-z]([\d\w.]{4,14})$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\/.,<>`~[\]{}])[A-Za-z\d!@#$%^&*()\-_=+\\/.,<>`~[\]{}]{8,16}$/;
-const emailRegex = /^.*@\w+\.(?!_)[A-Za-z]{2,3}\.(?!_)[A-Za-z]{0,2}$/;
+const emailRegex = /^.*@[\w\d-]+\.[A-Za-z]{2,3}(\.[A-Za-z]{0,2})?$/;
 const phoneRegex = /^\d{9,11}$/;
 window.addEventListener("DOMContentLoaded", function() {
 	const idInput = document.querySelector("input#memberId");

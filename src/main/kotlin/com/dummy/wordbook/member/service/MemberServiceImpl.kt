@@ -21,17 +21,19 @@ class MemberServiceImpl(private val memberRepository: MemberRepository) : Member
 
 	override fun save(member: Member) {
 		val passwordEncoder: BCryptPasswordEncoder = BCryptPasswordEncoder()
+		println("PASSWORD = " + passwordEncoder.encode(member.password))
 		memberRepository.save(Member(member.memberId, passwordEncoder.encode(member.password),
 			member.email, member.phone, member.address))
 	}
 
 	override fun loadUserByUsername(username: String?): UserDetails {
 		var authority: MutableList<GrantedAuthority> = ArrayList()
-		var member: Member = findByMemberId(username!!)!!  //null값 정리하기
+		var member = findByMemberId(username!!)?: Member("", "", "", "", null)
 		member.certified.let { certified ->
 			if(certified!!.equals(2)) authority.add(SimpleGrantedAuthority("ROLE_ADMIN"))
 			else authority.add(SimpleGrantedAuthority("ROLE_MEMBER"))
 		}
+
 		return User(username, member.password, authority)
 	}
 }

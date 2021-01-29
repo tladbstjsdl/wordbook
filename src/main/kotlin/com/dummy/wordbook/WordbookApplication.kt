@@ -10,9 +10,9 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 class WordbookApplication(private val memberService: MemberService) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
-        memberService.save(Member(null, "dummy", "123", "dummy@asd.com", "000-1111-2222",
+        memberService.save(Member(null, "dummy", "123", "dummy@asd.com", "00011112222",
             "qwrasf", null, 2))
-        memberService.save(Member(null, "qwe", "123", "qwe@asd.com", "000", "qwrasf",
+        memberService.save(Member(null, "qwe", "123", "qwe@asd.com", "00032124565", "qwrasf",
             null, 0))
     }
 }
