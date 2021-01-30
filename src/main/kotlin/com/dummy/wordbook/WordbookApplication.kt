@@ -6,13 +6,14 @@ import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.security.crypto.password.PasswordEncoder
 
 @SpringBootApplication
-class WordbookApplication(private val memberService: MemberService) : ApplicationRunner {
+class WordbookApplication(private val memberService: MemberService, private val passwordEncoder: PasswordEncoder) : ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
-        memberService.save(Member(null, "dummy", "123", "dummy@asd.com", "00011112222",
+        memberService.save(Member(null, "dummy", passwordEncoder.encode("123"), "dummy@asd.com", "00011112222",
             "qwrasf", null, 2))
-        memberService.save(Member(null, "qwe", "123", "qwe@asd.com", "00032124565", "qwrasf",
+        memberService.save(Member(null, "qwe", passwordEncoder.encode("123"), "qwe@asd.com", "00032124565", "qwrasf",
             null, 0))
     }
 }

@@ -6,6 +6,5 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 interface MemberService : UserDetailsService {
     public fun findByMemberId(memberId: String): Member?
-    public fun findByMemberIdAndPassword(memberId: String, password: String): Member?
     public fun save(member: Member)
 }

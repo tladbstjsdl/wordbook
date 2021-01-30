@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
@@ -17,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 class WebSecurityConfig(private val memberService: MemberService) : WebSecurityConfigurerAdapter() {
 	@Bean
 	public fun passwordEncoder(): PasswordEncoder {
-		return BCryptPasswordEncoder()
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder()
 	}
 
 	override fun configure(web: WebSecurity?) {
