@@ -2,13 +2,10 @@ package com.dummy.wordbook.member.service
 
 import com.dummy.wordbook.member.entity.Member
 import com.dummy.wordbook.member.entity.MemberRepository
-import com.dummy.wordbook.security.config.WebSecurityConfig
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
@@ -23,10 +20,10 @@ class MemberServiceImpl(private val memberRepository: MemberRepository) : Member
 	}
 
 	override fun loadUserByUsername(username: String?): UserDetails {
-		var authority: MutableList<GrantedAuthority> = ArrayList()
-		var member = findByMemberId(username!!)?: Member("", "", "", "", null)
+		val authority: MutableList<GrantedAuthority> = ArrayList()
+		val member = findByMemberId(username!!)?: Member("", "", "", "", null)
 		member.certified.let { certified ->
-			if(certified!!.equals(2)) authority.add(SimpleGrantedAuthority("ROLE_ADMIN"))
+			if(certified!!.toInt() == 2) authority.add(SimpleGrantedAuthority("ROLE_ADMIN"))
 			else authority.add(SimpleGrantedAuthority("ROLE_MEMBER"))
 		}
 
