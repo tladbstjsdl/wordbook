@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.factory.PasswordEncoderFactories
 import org.springframework.security.crypto.password.PasswordEncoder
 
@@ -26,7 +25,7 @@ class WebSecurityConfig(private val memberService: MemberService) : WebSecurityC
 	}
 
 	override fun configure(http: HttpSecurity?) {
-		http?.csrf()?.disable()?.authorizeRequests()
+		http?.authorizeRequests()
 			?.antMatchers("/", "/insertForm")?.permitAll()
 			?.antMatchers("/wordbook", "/wordbooklist")?.authenticated()
 			?.antMatchers("/notice/insert")?.hasRole("admin")
@@ -41,8 +40,8 @@ class WebSecurityConfig(private val memberService: MemberService) : WebSecurityC
 			?.invalidateHttpSession(true)
 	}
 
-	override fun configure(auth: AuthenticationManagerBuilder?) {
+	/*override fun configure(auth: AuthenticationManagerBuilder?) {
 		auth?.userDetailsService(memberService)?.passwordEncoder(passwordEncoder())
-	}
+	}*/
 
 }
