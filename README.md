@@ -1,6 +1,6 @@
 # wordbook
-## 사용 기술: Springboot 2.4.1, Kotlin 1.4.21, Thymeleaf 2.4.1, JPA 2.4.1, Oracle 20g, Spring Security 2.4.1
-### 개요: 자동 변역 기능이 있는 단어장을 만들고 수정
+## 자동 변역 기능이 있는 단어장을 만들고 수정
+### 사용 기술: Springboot 2.4.1, Kotlin 1.4.21, Thymeleaf 2.4.1, JPA 2.4.1, Oracle 20g, Spring Security 2.4.1
 
 
 > 주요기능
