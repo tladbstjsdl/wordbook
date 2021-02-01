@@ -34,7 +34,7 @@ data class Member(
 	var address: String?,
 	@Column(insertable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	var regDate: Date?,
-	@Column(nullable = false, columnDefinition = "NUMBER(2,0) DEFAULT 0")
+	@Column(nullable = false, columnDefinition = "NUMBER(1,0) DEFAULT 0")
 	var certified: Byte?
 ) {
 	override fun hashCode(): Int {
