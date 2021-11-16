@@ -1,6 +1,6 @@
 # wordbook
 ## 자동 변역 기능이 있는 단어장을 만들고 수정
-### 사용 기술: Springboot 2.4.1, Kotlin 1.4.21, Thymeleaf 2.4.1, JPA 2.4.1, Oracle 18c xe, Spring Security 2.4.1
+### 사용 기술: Springboot, Kotlin, React, JPA, MariaDB, Spring Security
 
 
 > 주요기능
@@ -39,13 +39,12 @@
 
 
 > 테이블
->> 1. MEMBER
+>> 1. USER
 >>> - ID: PRIMARY KEY, generated value
->>> - MEMBER_ID: VARCHAR2(15 CHAR), UNIQUE, NOT NULL
->>> - PASSWORD: VARCHAR2, NOT NULL
->>> - EMAIL: VARCHAR2, UNIQUE, NOT NULL
->>> - PHONE: VARCHAR2, UNIQUE, NOT NULL
->>> - ADDRESS: VARCHAR2
+>>> - EMAIL: VARCHAR, UNIQUE, NOT NULL
+>>> - PASSWORD: VARCHAR, NOT NULL
+>>> - PHONE: VARCHAR, UNIQUE, NOT NULL
+>>> - ADDRESS: VARCHAR
 >>> - REG_DATE: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP
 >>> - CERTIFIED: NUMBER(1,0), DEFAULT 0, NOT NULL
 >> 2. WORDBOOK(예정)
