@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper
 
 @Mapper
 interface UserMapper {
-	public fun findByEmail(dto :UserDto);
-	public fun findByEmailAndPassword(dto :UserDto);
+	fun findByEmail(email :String) :UserDto;
+	fun findByEmailAndPassword(email :String, password :String) :UserDto;
 }

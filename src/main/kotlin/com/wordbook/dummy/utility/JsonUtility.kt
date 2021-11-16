@@ -1,20 +1,14 @@
 package com.wordbook.dummy.utility
 
 import com.google.gson.Gson
-import com.google.gson.JsonIOException
 import com.google.gson.JsonObject
-import com.google.gson.JsonSyntaxException
-import com.google.gson.internal.Primitives
-import com.google.gson.stream.JsonReader
-import java.io.Reader
-import java.util.*
 
-class JsonUtility {
+open class JsonUtility {
 	companion object {
 		private val gson :Gson = Gson()
 
 		fun <T> fromJson(json :String, classOfT :Class<T>) :T {
-			return gson.fromJson<T>(json, classOfT)
+			return gson.fromJson(json, classOfT)
 		}
 
 		fun getIntFromJson(json :JsonObject, name :String) :Int? {
@@ -53,9 +47,16 @@ class JsonUtility {
 			}
 		}
 
-		fun <T> getListFromJson(json :JsonObject, name :String) :List<T>? {
+		inline fun <reified T> getListFromJson(json :JsonObject, name :String) :List<T>? {
 			return try {
-				json.get(name).asJsonArray.toList() as List<T>
+				val list :List<*> = json.get(name).asJsonArray.toList()
+				val result = list.filterIsInstance<T>().apply {
+					if(size != list.size) {
+						return null
+					}
+				}
+
+				result
 			} catch(e :UnsupportedOperationException) {
 				null
 			} catch(e :Exception) {

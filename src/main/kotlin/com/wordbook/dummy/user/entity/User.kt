@@ -2,13 +2,14 @@ package com.wordbook.dummy.user.entity
 
 import lombok.Builder
 import lombok.Getter
-import lombok.ToString
 import org.apache.logging.log4j.util.Strings
 import java.util.*
 import javax.persistence.*
 
 @Entity
-data class User(
+@Getter
+@Builder
+class User(
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(length = 20, unique = true, updatable = false)
 	private var id :Long? = null,
 	@Column(updatable = false)
